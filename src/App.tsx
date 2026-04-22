@@ -1,7 +1,18 @@
+import { Route, Routes } from "react-router-dom"
+import DashboardPage from "./pages/DashboardPage"
+import LoginPage from "./pages/LoginPage"
+import NotFoundPage from "./pages/NotFoundPage"
 
 function App() {
+
+  
+
   return (
-    <div>TaskFlow</div>
+    <Routes>
+      <Route path="/" element={<DashboardPage/>}/>
+      <Route path="/login" element={<LoginPage/>}/>
+      <Route path="/*" element={<NotFoundPage/>}/>
+    </Routes>
   )
 }
 
