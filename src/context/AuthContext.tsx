@@ -14,6 +14,9 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
                 password: "1234"
             }
             setActualUser(user)
+            return true;
+        }else{
+            return false;
         }
     }
 
