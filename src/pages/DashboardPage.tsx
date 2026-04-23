@@ -1,7 +1,14 @@
+import Sidebar from "../components/layout/Sidebar";
+import TaskList from "../components/tasks/TaskList";
+import '../styles/dashboard.css'
+
 export default function DashboardPage(){
     return(
-        <div>
-            <h1>Dashboard Page</h1>
-        </div>
+        <section className="dashboard">
+            <Sidebar />
+            <main className="dashboard__main">
+                <TaskList />
+            </main>
+        </section>
     )
 }
