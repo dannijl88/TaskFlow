@@ -1,5 +1,6 @@
 import { useTasks } from "../../hooks/useTasks"
 import TaskItem from "./TaskItem"
+import '../../styles/tasks.css'
 
 export default function TaskList(){
 

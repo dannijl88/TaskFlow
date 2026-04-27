@@ -1,6 +1,5 @@
 import Sidebar from "../components/layout/Sidebar";
 import TaskForm from "../components/tasks/TaskForm";
-import TaskItem from "../components/tasks/TaskItem";
 import TaskList from "../components/tasks/TaskList";
 import '../styles/dashboard.css'
 

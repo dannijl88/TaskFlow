@@ -1,0 +1,94 @@
+/* FORMULARIO DE TAREAS */
+
+.task-form{
+    width: 400px;
+    padding: 15px;
+    box-shadow: 2px 2px 4px 1px black;
+    background-color: #1a1d27;
+    border-radius: 10px;
+    margin: 0 auto;
+    margin-bottom: 6rem;
+}
+
+.task-form__title{
+    font-size: 2.2em;
+    font-weight: 500;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.task-form__label{
+    display: block;
+    margin-bottom: 10px;
+    color: #8b8fa8;
+}
+
+.task-form__input{
+    width: 100%;
+    padding: 5px;
+    background-color: #12151f;
+    border: 1px solid #2e3248;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.task-form__textarea{
+    width: 100%;
+    min-height: 1rem;
+    padding: .2rem;
+    border-radius: .2rem;
+    border: 1px solid #2e3248;
+    background-color: #12151f;
+    color: #2e3248;
+    resize: vertical;
+    font-family: inherit;
+}
+
+.task-form__button{
+    padding: 10px 20px;
+    margin-top: 10px;
+    border-radius: 8px;
+    background-color: #5c6bc0;
+    color: #ffffff;
+    width: 100%;
+}
+
+.task-form__button:hover{
+    background-color: #4a59b0;
+}
+
+/* FORMULARIO DE TAREAS */
+
+/* ITEMS DE TAREAS */
+
+.task-grid{
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1rem;
+}
+
+.task-item{
+    background-color: #fef08a;
+    border-radius: 0px 10px 10px 10px;
+    padding: 1rem;
+    color: #1a1a1a;
+}
+
+.task-item__button{
+    padding: 6px 12px;
+    border-radius: 6px;
+    border: none;
+    cursor: pointer;
+    font-size: .75rem;
+    font-weight: 500;
+    margin-right: 3px;
+    margin-top: 5px;
+    background-color: rgba(0,0,0,0.2);
+}
+
+.task-item--completed{
+    background-color: #4caf50;
+}
+
+/* ITEMS DE TAREAS */
