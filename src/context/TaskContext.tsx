@@ -6,16 +6,24 @@ export const context = createContext<TaskContextType | null>(null)
 export const TaskProvider = ({ children }: { children: ReactNode }) => {
     
     const [tasks, setTasks] = useState<Task[]>([])
+    const [isLoading, setIsLoading] = useState<boolean>(false)
+    const [error, setError] = useState<string | null>(null)
 
     const addTask = (title: string, description?: string, completed = false) =>  {
-        const newTask = {
-            id: Date.now(),
-            title: title,
-            description: description,
-            completed: completed
-        }
+        setIsLoading(true)
+        setTimeout(() => {
+            const newTask = {
+                id: Date.now(),
+                title: title,
+                description: description,
+                completed: completed
+            }
+            setTasks([...tasks, newTask])
+            setIsLoading(false)
+        }, 800);
+        
 
-        setTasks([...tasks, newTask])
+        
     }
 
     const toggleTask = (id: number) => {
@@ -35,7 +43,7 @@ export const TaskProvider = ({ children }: { children: ReactNode }) => {
     }
 
     return (
-            <context.Provider value={{ tasks: tasks, addTask, toggleTask, deleteTask, editTask}}>
+            <context.Provider value={{ tasks: tasks, addTask, toggleTask, deleteTask, editTask, isLoading, error}}>
                 {children}
             </context.Provider>)
 

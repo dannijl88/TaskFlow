@@ -11,4 +11,6 @@ export interface TaskContextType {
     toggleTask(id: number): void
     deleteTask(id: number): void
     editTask(id: number, title: string, description?: string): void
+    isLoading: boolean
+    error: string | null
 }

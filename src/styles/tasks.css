@@ -43,6 +43,7 @@
     color: #2e3248;
     resize: vertical;
     font-family: inherit;
+    color: white;
 }
 
 .task-form__button{
