@@ -13,4 +13,8 @@ export interface TaskContextType {
     editTask(id: number, title: string, description?: string): void
     isLoading: boolean
     error: string | null
+    filter: FilterType
+    setFilter(string: FilterType): void
 }
+
+export type FilterType = 'all' | 'pending' | 'completed'
