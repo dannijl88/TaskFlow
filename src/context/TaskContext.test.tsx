@@ -6,13 +6,15 @@ import userEvent from "@testing-library/user-event"
 const TestComponent = () => {
     const taskContext = useTasks()
     if(!taskContext) return null
-    const { tasks, addTask, deleteTask } = taskContext
+    const { tasks, addTask, deleteTask, toggleTask } = taskContext
     
     return (
         <div>
             <span>Total: {tasks.length}</span>
+            {tasks.length > 0 && <span>Completed: {String(tasks[0].completed)}</span>}
             <button onClick={() => addTask('Tarea de prueba')}>Añadir</button>
             <button onClick={() => deleteTask(tasks[0].id)}>Borrar</button>
+            <button onClick={() => toggleTask(tasks[0].id)}>Completada</button>
         </div>
     )
 }
@@ -49,4 +51,32 @@ test('debe borrar la tarea al hacer click en el boton borrar', async () => {
     await waitFor(() => {
         expect(screen.getByText((content, element) => element?.textContent === 'Total: 0')).toBeInTheDocument()
     })
+})
+
+test('debe cambiar el estado completado al hacer click en el boton toggle', async() => {
+
+    render(
+        <TaskProvider>
+            <TestComponent />
+        </TaskProvider>
+    )
+
+    const texto = screen.getByText((content, element) => element?.textContent === 'Total: 0')
+    expect(texto).toBeInTheDocument()
+    await userEvent.click(screen.getByRole('button', {name: /Añadir/i}))
+    await waitFor(() => {
+        expect(screen.getByText((content, element) => element?.textContent === 'Total: 1')).toBeInTheDocument()
+    })
+    const texto1 = screen.getByText((content, element) => element?.textContent === 'Completed: false')
+    expect(texto).toBeInTheDocument()
+    await userEvent.click(screen.getByRole('button', {name: /Completada/i}))
+    await waitFor(() => {
+        expect(screen.getByText((content, element) => element?.textContent === 'Completed: true')).toBeInTheDocument()
+    })
+    await userEvent.click(screen.getByRole('button', {name: /Completada/i}))
+    await waitFor(() => {
+        expect(screen.getByText((content, element) => element?.textContent === 'Completed: false')).toBeInTheDocument()
+    })
+
+
 })
