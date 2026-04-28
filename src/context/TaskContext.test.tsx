@@ -26,11 +26,11 @@ test('debe añadir una tarea al hacer click en el botón añadir', async () => {
         </TaskProvider>
     )
 
-    const texto = screen.getByText((content, element) => element?.textContent === 'Total: 0')
+    const texto = screen.getByText((_, element) => element?.textContent === 'Total: 0')
     expect(texto).toBeInTheDocument()
     await userEvent.click(screen.getByRole('button', {name: /Añadir/i}))
     await waitFor(() => {
-        expect(screen.getByText((content, element) => element?.textContent === 'Total: 1')).toBeInTheDocument()
+        expect(screen.getByText((_, element) => element?.textContent === 'Total: 1')).toBeInTheDocument()
     })
 })
 
@@ -41,15 +41,15 @@ test('debe borrar la tarea al hacer click en el boton borrar', async () => {
         </TaskProvider>
     )
 
-    const texto = screen.getByText((content, element) => element?.textContent === 'Total: 0')
+    const texto = screen.getByText((_, element) => element?.textContent === 'Total: 0')
     expect(texto).toBeInTheDocument()
     await userEvent.click(screen.getByRole('button', {name: /Añadir/i}))
     await waitFor(() => {
-        expect(screen.getByText((content, element) => element?.textContent === 'Total: 1')).toBeInTheDocument()
+        expect(screen.getByText((_, element) => element?.textContent === 'Total: 1')).toBeInTheDocument()
     })
     await userEvent.click(screen.getByRole('button', {name: /Borrar/i}))
     await waitFor(() => {
-        expect(screen.getByText((content, element) => element?.textContent === 'Total: 0')).toBeInTheDocument()
+        expect(screen.getByText((_, element) => element?.textContent === 'Total: 0')).toBeInTheDocument()
     })
 })
 
@@ -61,21 +61,21 @@ test('debe cambiar el estado completado al hacer click en el boton toggle', asyn
         </TaskProvider>
     )
 
-    const texto = screen.getByText((content, element) => element?.textContent === 'Total: 0')
+    const texto = screen.getByText((_, element) => element?.textContent === 'Total: 0')
     expect(texto).toBeInTheDocument()
     await userEvent.click(screen.getByRole('button', {name: /Añadir/i}))
     await waitFor(() => {
-        expect(screen.getByText((content, element) => element?.textContent === 'Total: 1')).toBeInTheDocument()
+        expect(screen.getByText((_, element) => element?.textContent === 'Total: 1')).toBeInTheDocument()
     })
-    const texto1 = screen.getByText((content, element) => element?.textContent === 'Completed: false')
-    expect(texto).toBeInTheDocument()
+    expect(screen.getByText((_, element) => element?.textContent === 'Completed: false')).toBeInTheDocument()
+    
     await userEvent.click(screen.getByRole('button', {name: /Completada/i}))
     await waitFor(() => {
-        expect(screen.getByText((content, element) => element?.textContent === 'Completed: true')).toBeInTheDocument()
+        expect(screen.getByText((_, element) => element?.textContent === 'Completed: true')).toBeInTheDocument()
     })
     await userEvent.click(screen.getByRole('button', {name: /Completada/i}))
     await waitFor(() => {
-        expect(screen.getByText((content, element) => element?.textContent === 'Completed: false')).toBeInTheDocument()
+        expect(screen.getByText((_, element) => element?.textContent === 'Completed: false')).toBeInTheDocument()
     })
 
 
