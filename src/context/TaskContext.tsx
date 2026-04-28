@@ -7,7 +7,6 @@ export const TaskProvider = ({ children }: { children: ReactNode }) => {
     
     const [tasks, setTasks] = useState<Task[]>([])
     const [isLoading, setIsLoading] = useState<boolean>(false)
-    const [error, setError] = useState<string | null>(null)
     const [filter, setFilter] = useState<FilterType>("all")
 
     const addTask = (title: string, description?: string, completed = false) =>  {
@@ -19,7 +18,7 @@ export const TaskProvider = ({ children }: { children: ReactNode }) => {
                 description: description,
                 completed: completed
             }
-            setTasks(prevTasks =>[...tasks, newTask])
+            setTasks(prevTasks =>[...prevTasks, newTask])
             setIsLoading(false)
         }, 800);
         
@@ -50,7 +49,7 @@ export const TaskProvider = ({ children }: { children: ReactNode }) => {
     })
 
     return (
-            <context.Provider value={{ tasks: filteredTasks, addTask, toggleTask, deleteTask, editTask, isLoading, error, filter, setFilter}}>
+            <context.Provider value={{ tasks: filteredTasks, addTask, toggleTask, deleteTask, editTask, isLoading, filter, setFilter}}>
                 {children}
             </context.Provider>)
 
